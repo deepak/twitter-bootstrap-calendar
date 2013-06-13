@@ -85,7 +85,14 @@ module Twitter
         def weeks
           first = date.beginning_of_month.beginning_of_week(start_day)
           last = date.end_of_month.end_of_week(start_day)
-          (first..last).to_a.in_groups_of(7)
+          
+          # (first..last).to_a.in_groups_of(7)
+          acc_weeks = []
+          begin
+            acc_weeks << first
+            first = first.to_date.next_day
+          end while(first <= last.to_date)
+          acc_weeks.in_groups_of(7, false)
         end
       end
     end
