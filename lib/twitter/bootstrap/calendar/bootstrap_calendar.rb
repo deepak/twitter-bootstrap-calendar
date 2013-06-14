@@ -26,7 +26,7 @@ module Twitter
 
 
         def calendar_div
-          content_tag 'div', class: "calendar_grid" do
+          content_tag 'div', class: "calendar_grid #{options[:container_class]}" do
             header + week_rows
           end
         end
